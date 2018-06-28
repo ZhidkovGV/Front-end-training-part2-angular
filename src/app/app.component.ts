@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {MessageService} from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +6,8 @@ import {MessageService} from './message.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'haHAAAA';
-  constructor(public messageService: MessageService) {
+
+  constructor() {
 
   }
 }
