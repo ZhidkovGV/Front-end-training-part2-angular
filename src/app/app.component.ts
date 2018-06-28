@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Data$Service} from './data-$.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor() {
+  constructor(public Data$Service: Data$Service) {
 
+  }
+  ngOnInit (){
+    this.Data$Service.data$()
   }
 }

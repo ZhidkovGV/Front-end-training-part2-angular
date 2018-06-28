@@ -10,6 +10,8 @@ import { LineControlComponent } from './line-control/line-control.component';
 import { ChangeColorModalComponent } from './change-color-modal/change-color-modal.component';
 import { AxesComponent } from './axes/axes.component';
 import { ControlsComponent } from './controls/controls.component';
+import {Data$Service} from './data-$.service';
+import {AddNew$Service} from './add-new-$.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { ControlsComponent } from './controls/controls.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     // no need to place any providers due to the `providedIn` flag...

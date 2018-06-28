@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {AddNew$Service} from './add-new-$.service';
 import {combineLatest, Observable} from 'rxjs';
 import {share} from 'rxjs/operators';
-import {Point} from './point-class';
+import {AppModule} from './app.module';
+import {AddNew$Service} from './add-new-$.service';
 
 @Injectable({
   providedIn: 'root'
-} as any)
+})
 export class Data$Service {
   lines = [];
 
@@ -18,9 +18,9 @@ export class Data$Service {
       this.lines.push(newStream);
       return combineLatest(...this.lines);
     }).pipe(share());
-
+    console.log(this.AddNew$Service.getNew$(3000, "green"))
   }
 
-  constructor(private AddNew$Service) {
+  constructor(private AddNew$Service : AddNew$Service) {
   }
 }

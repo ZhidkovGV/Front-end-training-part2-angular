@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Point} from './point-class';
 import {interval, Observable} from 'rxjs';
 import {map, scan, startWith} from 'rxjs/operators';
 
@@ -8,7 +7,7 @@ import {map, scan, startWith} from 'rxjs/operators';
 }as any)
 
 export class AddNew$Service {
-  getNew$ ($interval: number, color: string) : Observable<Point>{
+  getNew$ ($interval: number, color: string){
     return interval($interval)
       .pipe(
         startWith({val: 0, seconds: 0}),
@@ -16,7 +15,7 @@ export class AddNew$Service {
         scan((acc, val) => {
           const date = new Date();
           const seconds = date.getTime();
-          acc.push(acc.length > 1 ? {val, seconds} as Point : {val, seconds, color, shouldRender: true} as Point);
+          acc.push(acc.length > 1 ? {val, seconds} : {val, seconds, color, shouldRender: true});
           return acc;
         }, [])
       );
