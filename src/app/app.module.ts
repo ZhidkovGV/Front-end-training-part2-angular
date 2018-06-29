@@ -12,6 +12,7 @@ import { AxesComponent } from './axes/axes.component';
 import { ControlsComponent } from './controls/controls.component';
 import {Data$Service} from './data-$.service';
 import {AddNew$Service} from './add-new-$.service';
+import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AddNew$Service} from './add-new-$.service';
     LineControlComponent,
     ChangeColorModalComponent,
     AxesComponent,
-    ControlsComponent
+    ControlsComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
