@@ -8,10 +8,14 @@ import {Data$Service} from './data-$.service';
 })
 export class AppComponent {
 
-  constructor(public Data$Service: Data$Service) {
+  constructor(public data$Service: Data$Service) {
 
   }
   ngOnInit (){
-    this.Data$Service.data$()
+    let $ = this.data$Service.data$(17);
+    $.subscribe((item) => {
+      console.log(item)
+    });
+    console.log($)
   }
 }
