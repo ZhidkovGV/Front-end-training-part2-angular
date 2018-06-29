@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { InputComponent } from './input/input.component';
+import { FormComponent } from './form/form.component';
 import { SvgDrawBoxComponent } from './svg-draw-box/svg-draw-box.component';
 import { LineComponent } from './line/line.component';
 import { ConrtolBarComponent } from './conrtol-bar/conrtol-bar.component';
@@ -16,7 +16,7 @@ import {AddNew$Service} from './add-new-$.service';
 @NgModule({
   declarations: [
     AppComponent,
-    InputComponent,
+    FormComponent,
     SvgDrawBoxComponent,
     LineComponent,
     ConrtolBarComponent,

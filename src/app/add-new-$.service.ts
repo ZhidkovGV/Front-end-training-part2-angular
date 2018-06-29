@@ -11,11 +11,10 @@ export class AddNew$Service {
   getNew$ ($interval: number, color: string){
     return interval($interval)
       .pipe(
-        startWith({val: 0, seconds: 0}),
+        startWith({val: 0, seconds: 0} as Point),
         map(() => Math.random()),
         scan((acc, val: number) => {
-          const date = new Date();
-          const seconds = date.getTime();
+          const seconds = (new Date()).getTime();
           const point: Point = acc.length > 1 ? {val, seconds} : {val, seconds, color, shouldRender: true};
           acc.push(point);
           return acc;
