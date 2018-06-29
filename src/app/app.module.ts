@@ -10,9 +10,7 @@ import { LineControlComponent } from './line-control/line-control.component';
 import { ChangeColorModalComponent } from './change-color-modal/change-color-modal.component';
 import { AxesComponent } from './axes/axes.component';
 import { ControlsComponent } from './controls/controls.component';
-import {Data$Service} from './data-$.service';
-import {AddNew$Service} from './add-new-$.service';
-import { InputComponent } from './input/input.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +23,6 @@ import { InputComponent } from './input/input.component';
     ChangeColorModalComponent,
     AxesComponent,
     ControlsComponent,
-    InputComponent
   ],
   imports: [
     BrowserModule,
