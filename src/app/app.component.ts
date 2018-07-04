@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Data$Service} from './data-$.service';
 import {Point} from './point-interface';
 
@@ -9,14 +9,15 @@ import {Point} from './point-interface';
 })
 export class AppComponent {
   linesData: Point[];
-  constructor(
-    public data$Service: Data$Service
-  ) {}
-  ngOnInit (){
+
+  constructor(public data$Service: Data$Service) {
+  }
+
+  ngOnInit() {
     const $ = this.data$Service.getData$();
     $.subscribe((lines) => {
-      this.linesData = lines
-    })
+      this.linesData = lines;
+    });
 
   }
 }
