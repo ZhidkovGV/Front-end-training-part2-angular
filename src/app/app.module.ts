@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { SvgDrawBoxComponent } from './svg-draw-box/svg-draw-box.component';
-import { LineComponent } from './line/line.component';
 import { ConrtolBarComponent } from './conrtol-bar/conrtol-bar.component';
 import { LineControlComponent } from './line-control/line-control.component';
 import { ChangeColorModalComponent } from './change-color-modal/change-color-modal.component';
@@ -17,7 +16,6 @@ import { ControlsComponent } from './controls/controls.component';
     AppComponent,
     FormComponent,
     SvgDrawBoxComponent,
-    LineComponent,
     ConrtolBarComponent,
     LineControlComponent,
     ChangeColorModalComponent,

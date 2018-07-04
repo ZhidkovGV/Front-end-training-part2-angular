@@ -6,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./svg-draw-box.component.css']
 })
 export class SvgDrawBoxComponent implements OnInit {
-
   constructor() { }
-
   ngOnInit() {
   }
 

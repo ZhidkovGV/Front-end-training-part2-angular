@@ -1,21 +1,27 @@
 import {Injectable} from '@angular/core';
-import {combineLatest, Observable} from 'rxjs';
+import {combineLatest, Observable, Subject} from 'rxjs';
 import {AddNew$Service} from './add-new-$.service';
 import {GetInitialColorService} from './get-initial-color.service';
+import {Point} from './point-interface';
+import {switchMap} from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class Data$Service {
-  lines: Array<Observable<Object>> = [];
+  lines: Array<Observable<Point>> = [];
+  private lines$ = new Subject();
 
-  data$($interval: number) {
+  getData$() {
+    return this.lines$.pipe(switchMap(() => combineLatest(...this.lines)));
+  }
+
+  add$($interval: number) {
     const color = this.getInitialColor.getColor();
-    const new$ :Observable<Object> = this.addNew$Service.getNew$($interval, color);
-    console.log(new$);
+    const new$ = this.addNew$Service.getNew$($interval, color);
     this.lines.push(new$);
-    console.log(this.lines);
-    return combineLatest(...this.lines);
+    this.lines$.next();
   }
 
   constructor(private addNew$Service: AddNew$Service, private getInitialColor: GetInitialColorService) {

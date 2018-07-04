@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Data$Service} from '../data-$.service';
 
 @Component({
   selector: 'app-form',
@@ -6,14 +7,18 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  @Output() addNew$: EventEmitter<number> = new EventEmitter();
-
-  emmitClick(intervalInput :HTMLInputElement) {
-    this.addNew$.emit(parseInt(intervalInput.value))
+  emmitClick(intervalInput: HTMLInputElement) {
+    this.data$Service.add$(parseInt(intervalInput.value) || 3000);
   }
-  constructor() { }
+
+  constructor(public data$Service: Data$Service) {
+  }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+
   }
 
 }

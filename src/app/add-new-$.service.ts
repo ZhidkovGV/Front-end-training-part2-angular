@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {interval} from 'rxjs';
+import {interval, Observable} from 'rxjs';
 import {map, scan, startWith} from 'rxjs/operators';
 import {Point} from './point-interface';
 
@@ -8,7 +8,7 @@ import {Point} from './point-interface';
 })
 
 export class AddNew$Service {
-  getNew$ ($interval: number, color: string){
+  getNew$ ($interval: number, color: string) :Observable<Point>{
     return interval($interval)
       .pipe(
         startWith({val: 0, seconds: 0} as Point),
