@@ -1,4 +1,6 @@
+import {AxisDomain, AxisScale} from 'd3-axis';
+
 export interface Scales {
-  x: Function,
-  y: Function
+  x: AxisScale<AxisDomain>,
+  y: AxisScale<AxisDomain>
 }
