@@ -9,7 +9,6 @@ import {Point} from './point-interface';
 })
 export class AppComponent {
   linesData: Point[];
-
   constructor(public data$Service: Data$Service) {
   }
 
