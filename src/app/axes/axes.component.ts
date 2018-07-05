@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Scales} from '../scales-interface';
-import {Point} from '../point-interface';
+import {Scales} from '../interfaces/scales-interface';
+import {Point} from '../interfaces/point-interface';
 
 @Component({
   selector: 'app-axes',

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Data$Service} from './data-$.service';
-import {Point} from './point-interface';
+import {Point} from './interfaces/point-interface';
 
 @Component({
   selector: 'app-root',
