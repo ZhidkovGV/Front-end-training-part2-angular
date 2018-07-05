@@ -1,9 +1,9 @@
-import {Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef, OnChanges, AfterContentInit, OnDestroy} from '@angular/core';
 import {Point} from '../point-interface';
 import * as ResizeDetector from 'element-resize-detector';
 import {scaleLinear} from 'd3-scale';
 import {max, min} from 'd3-array';
-import {AreaRadial} from 'd3-shape';
+import {Scales} from '../scales-interface';
 
 const elementResizeDetector = ResizeDetector();
 
@@ -12,11 +12,12 @@ const elementResizeDetector = ResizeDetector();
   templateUrl: './svg-draw-box.component.html',
   styleUrls: ['./svg-draw-box.component.css']
 })
-export class SvgDrawBoxComponent implements OnInit, OnChanges {
+export class SvgDrawBoxComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
   @Input() lineData: Point[];
   @ViewChild('svgBox') svgBox: ElementRef;
-  xScale: Function;
-  yScale: Function;
+  scales: Scales;
+  svgWidth: number;
+  svgHeight: number;
 
   constructor() {
   }
@@ -28,20 +29,26 @@ export class SvgDrawBoxComponent implements OnInit, OnChanges {
     if (changes.lineData) this.countScale(changes.lineData.currentValue);
   }
 
+  ngAfterContentInit() {
+    elementResizeDetector.listenTo(this.svgBox.nativeElement, (element) => {
+      this.svgWidth = element.offsetWidth;
+      this.svgHeight = element.offsetHeight;
+    });
+  }
+  ngOnDestroy() {
+    elementResizeDetector.removeAllListeners(this.svgBox.nativeElement);
+  }
   countScale(data: Point[][]): void {
-    const svgWidth: number = parseInt(window.getComputedStyle(this.svgBox.nativeElement).width);
-    const svgHeight: number = parseInt(window.getComputedStyle(this.svgBox.nativeElement).height);
+    this.scales.x = scaleLinear().domain(
+      [min(data, (line) => min(line, (point: Point) => point.seconds)),
+        max(data, (line: Point[]) => max(line, (point: Point) => point.seconds))]
+    ).range([0, this.svgWidth]);
+    this.scales.y = scaleLinear().domain(
+      [min(data, (line) => min(line, (point) => point.val)),
+        max(data, (line: Point[]) => max(line, (point) => point.val))]
+    ).range([0, this.svgHeight]);
 
-    this.xScale = scaleLinear().domain(
-        [min(data, (line: Array<Point>) => min(line, (point: Point) => point.seconds)),
-        max(data, (line : Point[]) => max(line, (point: Point) => point.seconds))]
-    ).range([0, svgWidth]);
-    this.yScale = scaleLinear().domain(
-      [min(data, (line: Array<Point>) => min(line, (point: Point) => point.val)),
-        max(data, (line : Point[]) => max(line, (point: Point) => point.val))]
-    ).range([0, svgHeight]);
-
-    console.log(this.xScale);
+    console.log(this.svgWidth, this.svgHeight);
   }
 
 }
