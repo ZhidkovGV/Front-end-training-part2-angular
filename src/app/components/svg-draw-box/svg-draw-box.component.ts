@@ -1,10 +1,9 @@
 import {Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef, OnChanges, AfterContentInit, OnDestroy} from '@angular/core';
-import {Point} from '../interfaces/point-interface';
+import {Point} from '../../interfaces/point-interface';
 import * as ResizeDetector from 'element-resize-detector';
 import {scaleLinear} from 'd3-scale';
 import {max, min} from 'd3-array';
-import {Scales} from '../interfaces/scales-interface';
-import {AxisDomain, AxisScale} from 'd3-axis';
+import {Scales} from '../../interfaces/scales-interface';
 
 const elementResizeDetector = ResizeDetector();
 
@@ -16,7 +15,7 @@ const elementResizeDetector = ResizeDetector();
 export class SvgDrawBoxComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
   @Input() lineData: Point[];
   @ViewChild('svgBox') svgBox: ElementRef;
-  scales : Scales = {} as Scales;
+  scales : Scales;
   svgWidth: number;
   svgHeight: number;
 
@@ -52,7 +51,6 @@ export class SvgDrawBoxComponent implements OnInit, OnChanges, AfterContentInit,
         max(data, (line: Point[]) => max(line, (point) => point.val))]
     ).range([0, this.svgHeight]);
     this.scales = scales;
-    console.log(this.svgWidth, this.svgHeight);
   }
 
 }

@@ -20,22 +20,3 @@ html, body {
 .line {
   stroke-width: 5px;
 }
-.input-container {
-  display: flex;
-  flex-basis: 5%;
-  justify-content: center;
-}
-
-.remove-line-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  flex-basis: 5%;
-}
-.svg-container {
-  flex-basis: 60%;
-  width: 90%;
-}
-svg {
-  padding: 1% 2%;
-}

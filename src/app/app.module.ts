@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { FormComponent } from './form/form.component';
-import { SvgDrawBoxComponent } from './svg-draw-box/svg-draw-box.component';
-import { ConrtolBarComponent } from './conrtol-bar/conrtol-bar.component';
-import { LineControlComponent } from './line-control/line-control.component';
-import { ChangeColorModalComponent } from './change-color-modal/change-color-modal.component';
-import { AxesComponent } from './axes/axes.component';
-import { ControlsComponent } from './controls/controls.component';
-import { LineComponent } from './line/line.component';
+import { FormComponent } from './components/form/form.component';
+import { SvgDrawBoxComponent } from './components/svg-draw-box/svg-draw-box.component';
+import { ConrtolBarComponent } from './components/conrtol-bar/conrtol-bar.component';
+import { LineControlComponent } from './components/line-control/line-control.component';
+import { ChangeColorModalComponent } from './components/change-color-modal/change-color-modal.component';
+import { AxesComponent } from './components/axes/axes.component';
+import { ControlsComponent } from './components/controls/controls.component';
+import { LineComponent } from './components/line/line.component';
 
 
 @NgModule({

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Data$Service} from './data-$.service';
+import {Data$Service} from './services/data-$.service';
 import {Point} from './interfaces/point-interface';
 
 @Component({

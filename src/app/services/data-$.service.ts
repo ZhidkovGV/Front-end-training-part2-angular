@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {combineLatest, Observable, Subject} from 'rxjs';
 import {AddNew$Service} from './add-new-$.service';
 import {GetInitialColorService} from './get-initial-color.service';
-import {Point} from './interfaces/point-interface';
+import {Point} from '../interfaces/point-interface';
 import {switchMap} from 'rxjs/operators';
 
 

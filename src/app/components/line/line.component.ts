@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {Point} from '../interfaces/point-interface';
-import {Scales} from '../interfaces/scales-interface';
+import {Point} from '../../interfaces/point-interface';
+import {Scales} from '../../interfaces/scales-interface';
 
 @Component({
   selector: '[app-line]',
