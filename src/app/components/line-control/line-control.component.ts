@@ -1,5 +1,6 @@
 import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
 import {Point} from '../../interfaces/point.interface';
+import {Line} from '../../interfaces/line.interface';
 
 @Component({
   selector: 'app-line-control',
@@ -7,7 +8,7 @@ import {Point} from '../../interfaces/point.interface';
   styleUrls: ['./line-control.component.css']
 })
 export class LineControlComponent implements OnInit, AfterContentInit {
-  @Input() lineParams: Point;
+  @Input() lineParams: Line;
 
   constructor() {
   }
