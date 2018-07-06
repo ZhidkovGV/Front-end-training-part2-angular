@@ -13,15 +13,14 @@ export class LineComponent implements OnInit{
   @Input() scales: Scales;
   @ViewChild('line') linePath: ElementRef;
   private lineFunction: Function = line()
-    .x((point) => this.scales.x(point["seconds"]))
-    .y((point) => this.scales.y(point['val']));
+    .x((point) => this.scales.x(point["seconds"] as any))
+    .y((point) => this.scales.y(point['val'] as any));
   constructor() {
   }
 
   ngOnInit() {}
 
   getColor() {
-    console.log(this.line);
     return this.line.color;
   }
   getData() {

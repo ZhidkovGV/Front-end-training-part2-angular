@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Point} from '../../interfaces/point.interface';
 
 @Component({
@@ -6,7 +6,7 @@ import {Point} from '../../interfaces/point.interface';
   templateUrl: './control-bar.component.html',
   styleUrls: ['./control-bar.component.css']
 })
-export class ControlBarComponent implements OnInit, OnChanges {
+export class ControlBarComponent implements OnInit {
   @Input() lineData: Point[][];
 
   constructor() {
@@ -15,7 +15,4 @@ export class ControlBarComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
 }

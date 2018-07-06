@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Data$Service} from './services/data-$.service';
-import {Point} from './interfaces/point.interface';
+import {Line} from './interfaces/line.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,14 @@ import {Point} from './interfaces/point.interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy{
-  linesData: Point[] = [];
+  linesData: Line[] = [];
   lines$: any;
   constructor(public data$Service: Data$Service) {
   }
 
   ngOnInit() {
     this.lines$ = this.data$Service.getData$();
-    this.lines$.subscribe((lines : Point[]) => {
+    this.lines$.subscribe((lines : Line[]) => {
       this.linesData = lines;
     });
 

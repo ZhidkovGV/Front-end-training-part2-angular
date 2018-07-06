@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { SvgDrawBoxComponent } from './components/svg-draw-box/svg-draw-box.component';
-import { ControlBarComponent } from './components/conrtol-bar/control-bar.component';
+import { ControlBarComponent } from './components/control-bar/control-bar.component';
 import { LineControlComponent } from './components/line-control/line-control.component';
 import { AxesComponent } from './components/axes/axes.component';
 import { ControlsComponent } from './components/controls/controls.component';
