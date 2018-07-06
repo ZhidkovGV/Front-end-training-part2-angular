@@ -10,7 +10,7 @@ import {switchMap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class Data$Service {
-  lines: Array<Observable<Point>> = [];
+  private lines: Array<Observable<Point>> = [];
   private lines$ = new Subject();
 
   getData$() {

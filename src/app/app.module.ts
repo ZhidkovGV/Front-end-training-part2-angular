@@ -6,7 +6,6 @@ import { FormComponent } from './components/form/form.component';
 import { SvgDrawBoxComponent } from './components/svg-draw-box/svg-draw-box.component';
 import { ControlBarComponent } from './components/conrtol-bar/control-bar.component';
 import { LineControlComponent } from './components/line-control/line-control.component';
-import { ChangeColorModalComponent } from './components/change-color-modal/change-color-modal.component';
 import { AxesComponent } from './components/axes/axes.component';
 import { ControlsComponent } from './components/controls/controls.component';
 import { LineComponent } from './components/line/line.component';
@@ -19,7 +18,6 @@ import { LineComponent } from './components/line/line.component';
     SvgDrawBoxComponent,
     ControlBarComponent,
     LineControlComponent,
-    ChangeColorModalComponent,
     AxesComponent,
     ControlsComponent,
     LineComponent,

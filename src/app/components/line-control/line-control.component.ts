@@ -11,7 +11,12 @@ export class LineControlComponent implements OnInit, AfterContentInit {
 
   constructor() {
   }
-
+  lineVisibilityChanged(visibilityCheckbox: HTMLInputElement) {
+    console.log(visibilityCheckbox.value)
+  }
+  colorChanged(colorPicker: HTMLInputElement) {
+    console.log(colorPicker.value)
+  }
   ngOnInit() {
   }
 

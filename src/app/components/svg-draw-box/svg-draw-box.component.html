@@ -1,8 +1,8 @@
 <div #svgBox>
   <svg>
-    <g app-axes [scales]="scales" [linesData]="lineData"></g>
-    <g *ngFor="let line of lineData">
-      <g app-line  *ngIf="line[0].shouldRender" [scales]="scales" [line]="line"></g>
-    </g>
+    <svg:g app-axes [scales]="scales" [linesData]="lineData"></svg:g>
+    <svg:g *ngFor="let line of lineData">
+      <svg:g app-line  *ngIf="line[0].shouldRender" [scales]="scales" [line]="line"></svg:g>
+    </svg:g>
   </svg>
 </div>

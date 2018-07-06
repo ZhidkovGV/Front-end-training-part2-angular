@@ -1,5 +1,5 @@
 <div>
-  <input type="checkbox" name="hide-line">
-  <input type="color" name="color-chooser" [attr.value]="lineParams.color">
+  <input type="checkbox" name="hide-line" (change)="lineVisibilityChanged(hideLineInput)" #hideLineInput>
+  <input type="color" name="color-chooser" [attr.value]="lineParams.color" (change)="colorChanged(pickcolorInput)" #pickcolorInput>
 </div>
 
