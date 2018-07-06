@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef} from '@angular/core';
-import {Scales} from '../../interfaces/scales-interface';
+import {Scales} from '../../interfaces/scales.interface';
 import {axisBottom, axisLeft} from 'd3-axis';
 import {select} from 'd3-selection';
 

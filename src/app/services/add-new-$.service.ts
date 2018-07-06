@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {interval, Observable} from 'rxjs';
 import {map, scan, startWith} from 'rxjs/operators';
-import {Point} from '../interfaces/point-interface';
+import {Point} from '../interfaces/point.interface';
 
 @Injectable({
   providedIn: 'root'

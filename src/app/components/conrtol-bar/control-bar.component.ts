@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Point} from '../../interfaces/point-interface';
+import {Point} from '../../interfaces/point.interface';
 
 @Component({
   selector: 'app-conrtol-bar',

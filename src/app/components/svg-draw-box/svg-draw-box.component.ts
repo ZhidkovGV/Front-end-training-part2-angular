@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef, OnChanges, AfterContentInit, OnDestroy} from '@angular/core';
-import {Point} from '../../interfaces/point-interface';
+import {Point} from '../../interfaces/point.interface';
 import * as ResizeDetector from 'element-resize-detector';
 import {scaleLinear} from 'd3-scale';
 import {max, min} from 'd3-array';
-import {Scales} from '../../interfaces/scales-interface';
+import {Scales} from '../../interfaces/scales.interface';
 
 const elementResizeDetector = ResizeDetector();
 

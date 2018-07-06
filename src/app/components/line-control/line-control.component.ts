@@ -1,5 +1,5 @@
 import {AfterContentInit, Component, Input, OnInit} from '@angular/core';
-import {Point} from '../../interfaces/point-interface';
+import {Point} from '../../interfaces/point.interface';
 
 @Component({
   selector: 'app-line-control',
