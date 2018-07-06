@@ -21,7 +21,6 @@ export class AxesComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     const xAxis = axisBottom(changes.scales.currentValue.x).ticks(5);
     const yAxis = axisLeft(changes.scales.currentValue.y).ticks(4);
-    console.log(select(this.xAxisGroup.nativeElement));
     select(this.xAxisGroup.nativeElement).attr("transform", "translate(0,0)").call(xAxis);
     select(this.yAxisGroup.nativeElement).attr("transform", "translate(0,0)").call(yAxis);
   }

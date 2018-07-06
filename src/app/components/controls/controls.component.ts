@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Point} from '../../interfaces/point-interface';
 
 @Component({
   selector: 'app-controls',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./controls.component.css']
 })
 export class ControlsComponent implements OnInit {
-  constructor() { }
+  @Input() linesData: Point[][];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
