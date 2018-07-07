@@ -29,14 +29,14 @@ export class Data$Service {
   update$Color($interval: number, color: string, id: number, prevValue: Point[]) {
     this.lines.splice(id, 1);
     const new$ = this.addNew$Service.getNew$($interval, color, id, prevValue);
-    this.lines.push(new$);
+    this.lines.splice(id, 0, new$);
     this.lines$.next();
   }
 
   update$Visibility($interval: number, color: string, id: number, prevValue: Point[], shouldRender: boolean) {
     this.lines.splice(id, 1);
     const new$ = this.addNew$Service.getNew$($interval, color, id, prevValue, shouldRender);
-    this.lines.push(new$);
+    this.lines.splice(id, 0, new$);
     this.lines$.next();
   }
 
