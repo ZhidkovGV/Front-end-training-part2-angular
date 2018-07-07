@@ -27,7 +27,9 @@ export class SvgDrawBoxComponent implements OnInit, OnChanges, AfterContentInit,
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.linesData) this.countScale(changes.linesData.currentValue[0].points); // TSLINT TSLINT TSLINT
+    if (changes.linesData) {
+      this.countScale(changes.linesData.currentValue[0].points);
+    }
   }
 
   ngAfterContentInit() {

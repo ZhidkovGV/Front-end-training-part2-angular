@@ -1,32 +1,28 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {Scales} from '../../interfaces/scales.interface';
 import {line} from 'd3-shape';
 import {Line} from '../../interfaces/line.interface';
+import {Point} from '../../interfaces/point.interface';
 
 @Component({
-  selector: '[app-line]',
+  selector: '[app-line]', // selected as attribute because of svg. svg don't render custom elements and their content
   templateUrl: './line.component.html',
   styleUrls: ['./line.component.css']
 })
-export class LineComponent implements OnInit{ // formnatting! why won't you listen to tslint?
+export class LineComponent {
   @Input() line: Line;
   @Input() scales: Scales;
-  @ViewChild('line') linePath: ElementRef;  // private and public fields are usually separated by newline
+  @ViewChild('line') linePath: ElementRef;
+
   private lineFunction: Function = line()
-    .x((point) => this.scales.x(point["seconds"] as any)) // TSLINT!
-    .y((point) => this.scales.y(point['val'] as any));
-
-  // why
-  constructor() {
-  }
-
-  // why
-  ngOnInit() {}
+    .x((point) => this.scales.x(point['seconds'])) // TSLINT!
+    .y((point) => this.scales.y(point['val']));
 
   getColor() {
     return this.line.color;
-  } // methods are always separated by newline!
+  }
+
   getData() {
-    return this.lineFunction(this.line.points as any) // TSLINT TSLINT TSLINT
+    return this.lineFunction(this.line.points); // TSLINT TSLINT TSLINT
   }
 }

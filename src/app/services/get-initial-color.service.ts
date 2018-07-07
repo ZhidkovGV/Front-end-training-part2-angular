@@ -12,5 +12,4 @@ export class GetInitialColorService {
     }
     return color;
   }
-  constructor() { }
 }

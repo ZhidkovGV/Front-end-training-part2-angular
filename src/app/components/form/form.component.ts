@@ -1,27 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {Data$Service} from '../../services/data-$.service';
+import {Component} from '@angular/core';
+import {LinesDataService} from '../../services/lines-data.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
-  // <!--SPELLCHECK!!!-->
+export class FormComponent {
+
+  constructor(public data$Service: LinesDataService) {
+  }
+
   emmitClick(intervalInput: HTMLInputElement) {
-    this.data$Service.add$(parseInt(intervalInput.value) || 3000); // radix param in parseInt. read why you need it
+    this.data$Service.addLine(parseInt(intervalInput.value, 10) || 3000);
   }
 
-  constructor(public data$Service: Data$Service) {
-  }
-
-  // why
-  ngOnInit() {
-  }
-
-  // why
-  ngOnDestroy() {
-
-  }
 
 }

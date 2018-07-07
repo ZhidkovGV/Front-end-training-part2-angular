@@ -1,5 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Point} from '../../interfaces/point.interface';
+import {Component, Input} from '@angular/core';
 import {Line} from '../../interfaces/line.interface';
 
 @Component({
@@ -7,15 +6,7 @@ import {Line} from '../../interfaces/line.interface';
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.css']
 })
-export class ControlsComponent implements OnInit {
+export class ControlsComponent {
   @Input() linesData: Line[];
-
-  // why
-  constructor() {
-  }
-
-  // why
-  ngOnInit() {
-  }
 
 }
