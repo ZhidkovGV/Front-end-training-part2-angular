@@ -8,14 +8,14 @@ import {Line} from './interfaces/line.interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  linesData: Line[] = [];
+  linesData: Line[];
   lines$: any;
 
-  constructor(public data$Service: LinesDataService) {
+  constructor(public linesDataService: LinesDataService) {
   }
 
   ngOnInit() {
-    this.lines$ = this.data$Service.getData$();
+    this.lines$ = this.linesDataService.getData$();
     this.lines$.subscribe((lines: Line[]) => {
       this.linesData = lines;
     });

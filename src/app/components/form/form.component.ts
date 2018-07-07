@@ -11,7 +11,7 @@ export class FormComponent {
   constructor(public data$Service: LinesDataService) {
   }
 
-  emmitClick(intervalInput: HTMLInputElement) {
+  addNewLine(intervalInput: HTMLInputElement) {
     this.data$Service.addLine(parseInt(intervalInput.value, 10) || 3000);
   }
 

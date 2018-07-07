@@ -3,6 +3,10 @@ import {Line} from '../../interfaces/line.interface';
 
 // this component is pretty useless, and i would get rid of it.
 // But it's ok, no harm done, except potential questions on the purpose of it's existence on code review
+
+// potentially can be usable if some additional logic will be applied. also separates form and line controls
+// but its really useless for now
+
 @Component({
   selector: 'app-control-bar',
   templateUrl: './control-bar.component.html',

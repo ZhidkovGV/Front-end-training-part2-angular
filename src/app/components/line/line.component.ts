@@ -15,7 +15,7 @@ export class LineComponent {
   @ViewChild('line') linePath: ElementRef;
 
   private lineFunction: Function = line()
-    .x((point) => this.scales.x(point['seconds'])) // TSLINT!
+    .x((point) => this.scales.x(point['seconds']))
     .y((point) => this.scales.y(point['val']));
 
   getColor() {
@@ -23,6 +23,6 @@ export class LineComponent {
   }
 
   getData() {
-    return this.lineFunction(this.line.points); // TSLINT TSLINT TSLINT
+    return this.lineFunction(this.line.points);
   }
 }

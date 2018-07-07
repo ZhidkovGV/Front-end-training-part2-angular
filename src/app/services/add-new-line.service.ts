@@ -30,5 +30,5 @@ export class AddNewLineService {
           return acc;
         }, {points: []} as Line)
       );
-  }
+  } // not sure about array init here
 }
