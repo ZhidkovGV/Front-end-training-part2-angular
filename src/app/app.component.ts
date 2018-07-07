@@ -15,12 +15,12 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.lines$ = this.data$Service.getData$();
-    this.lines$.subscribe((lines : Line[]) => {
+    this.lines$.subscribe((lines : Line[]) => { // TSLINT TSLINT TSLINT
       this.linesData = lines;
     });
 
   }
   ngOnDestroy() {
-    this.lines$.unsubscribe()
+    this.lines$.unsubscribe() // TSLINT TSLINT TSLINT
   }
 }

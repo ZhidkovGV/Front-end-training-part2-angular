@@ -7,16 +7,19 @@ import {Data$Service} from '../../services/data-$.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  // <!--SPELLCHECK!!!-->
   emmitClick(intervalInput: HTMLInputElement) {
-    this.data$Service.add$(parseInt(intervalInput.value) || 3000);
+    this.data$Service.add$(parseInt(intervalInput.value) || 3000); // radix param in parseInt. read why you need it
   }
 
   constructor(public data$Service: Data$Service) {
   }
 
+  // why
   ngOnInit() {
   }
 
+  // why
   ngOnDestroy() {
 
   }

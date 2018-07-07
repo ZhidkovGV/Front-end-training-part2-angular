@@ -14,17 +14,19 @@ export class LineControlComponent implements OnInit, AfterContentInit {
   }
 
   lineVisibilityChanged(visibilityCheckbox: HTMLInputElement) {
-    this.data$Service.update$Visibility(this.lineParams.$interval, this.lineParams.color, this.lineParams.id, this.lineParams.points, visibilityCheckbox.checked)
+    this.data$Service.update$Visibility(this.lineParams.$interval, this.lineParams.color, this.lineParams.id, this.lineParams.points, visibilityCheckbox.checked) // TSLINT TSLINT TSLINT
   }
 
   colorChanged(colorPicker: HTMLInputElement) {
     this.data$Service.update$Color(this.lineParams.$interval, colorPicker.value, this.lineParams.id, this.lineParams.points);
   }
 
+  // why
   ngOnInit() {
 
   }
 
+  // why
   ngAfterContentInit() {
 
   }

@@ -10,9 +10,11 @@ import {Line} from '../../interfaces/line.interface';
 export class ControlsComponent implements OnInit {
   @Input() linesData: Line[];
 
+  // why
   constructor() {
   }
 
+  // why
   ngOnInit() {
   }
 

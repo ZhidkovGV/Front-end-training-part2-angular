@@ -19,6 +19,8 @@ export class AxesComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
   ngOnChanges(changes: SimpleChanges) {
+    // what if later you'd want to add another @Input to this component?
+
     const xAxis = axisBottom(changes.scales.currentValue.x).ticks(5);
     const yAxis = axisLeft(changes.scales.currentValue.y).ticks(4);
     select(this.xAxisGroup.nativeElement).call(xAxis);

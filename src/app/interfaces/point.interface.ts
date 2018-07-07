@@ -1,4 +1,4 @@
 export interface Point {
   val: number;
-  seconds: number
+  seconds: number // TSLINT TSLINT TSLINT
 }
