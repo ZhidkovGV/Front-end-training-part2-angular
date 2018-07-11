@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LinesDataService} from './services/lines-data.service';
 import {Line} from './interfaces/line.interface';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {StoreModule} from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { SvgDrawBoxComponent } from './components/svg-draw-box/svg-draw-box.component';
@@ -9,7 +10,7 @@ import { LineControlComponent } from './components/line-control/line-control.com
 import { AxesComponent } from './components/axes/axes.component';
 import { ControlsComponent } from './components/controls/controls.component';
 import { LineComponent } from './components/line/line.component';
-
+import {counterReducer} from './reducers/lineData.reducer';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LineComponent } from './components/line/line.component';
   imports: [
     BrowserModule,
     FormsModule,
+    StoreModule.forRoot({lineData: counterReducer})
   ],
   providers: [
     // no need to place any providers due to the `providedIn` flag...
