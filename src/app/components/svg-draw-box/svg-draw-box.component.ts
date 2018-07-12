@@ -46,7 +46,7 @@ export class SvgDrawBoxComponent implements OnInit, OnChanges, AfterContentInit,
   countScale(data: Point[]): void {
     this.scales = {
       x: scaleLinear()
-        .domain([min(data, (point) => point.seconds), max(data, (point) => point.seconds)])
+        .domain([min(data, (point) => point.time), max(data, (point) => point.time)])
         .range([0, this.svgWidth]),
       y: scaleLinear()
         .domain([min(data, (point) => point.val), max(data, (point) => point.val)])

@@ -25,7 +25,7 @@ export class AddNewLineService {
             acc.$interval = $interval;
           }
           const seconds = (new Date()).getTime();
-          const point: Point = {val, seconds};
+          const point: Point = {val, time: seconds};
           acc.points.push(point);
           return acc;
         }, {points: []} as Line)

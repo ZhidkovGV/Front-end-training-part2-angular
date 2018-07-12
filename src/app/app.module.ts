@@ -10,7 +10,7 @@ import { LineControlComponent } from './components/line-control/line-control.com
 import { AxesComponent } from './components/axes/axes.component';
 import { ControlsComponent } from './components/controls/controls.component';
 import { LineComponent } from './components/line/line.component';
-import {counterReducer} from './reducers/lineData.reducer';
+import {lineDataReducer} from './reducers/lineData.reducer';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import {counterReducer} from './reducers/lineData.reducer';
   imports: [
     BrowserModule,
     FormsModule,
-    StoreModule.forRoot({lineData: counterReducer})
+    StoreModule.forRoot({lineData: lineDataReducer})
   ],
   providers: [
     // no need to place any providers due to the `providedIn` flag...

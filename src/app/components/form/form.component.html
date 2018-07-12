@@ -1,5 +1,4 @@
 <div class="input-container">
   <input type="text" class="input-interval" placeholder="input interval" #intervalInput>
   <button class="start-stream-with-interval" (click)="addNewLine(intervalInput)">Add Line</button>
-  <div *ngFor="let number of count$ | async">{{number}}</div>
 </div>

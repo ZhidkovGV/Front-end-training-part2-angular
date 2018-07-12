@@ -2,7 +2,6 @@ import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {Scales} from '../../interfaces/scales.interface';
 import {line} from 'd3-shape';
 import {Line} from '../../interfaces/line.interface';
-import {Point} from '../../interfaces/point.interface';
 
 @Component({
   selector: '[app-line]', // selected as attribute because of svg. svg don't render custom elements and their content
@@ -15,7 +14,7 @@ export class LineComponent {
   @ViewChild('line') linePath: ElementRef;
 
   private lineFunction: Function = line()
-    .x((point) => this.scales.x(point['seconds']))
+    .x((point) => this.scales.x(point['time']))
     .y((point) => this.scales.y(point['val']));
 
   getColor() {
