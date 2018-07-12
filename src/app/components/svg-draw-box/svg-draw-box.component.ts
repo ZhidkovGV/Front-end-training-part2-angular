@@ -1,10 +1,12 @@
-import {Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef, OnChanges, AfterContentInit, OnDestroy} from '@angular/core';
-import {Point} from '../../interfaces/point.interface';
+import {AfterContentInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as ResizeDetector from 'element-resize-detector';
 import {scaleLinear} from 'd3-scale';
 import {max, min} from 'd3-array';
 import {Scales} from '../../interfaces/scales.interface';
 import {Line} from '../../interfaces/line.interface';
+import {select, Store} from '@ngrx/store';
+import {combineLatest} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
 const elementResizeDetector = ResizeDetector();
 
@@ -13,23 +15,21 @@ const elementResizeDetector = ResizeDetector();
   templateUrl: './svg-draw-box.component.html',
   styleUrls: ['./svg-draw-box.component.css']
 })
-export class SvgDrawBoxComponent implements OnInit, OnChanges, AfterContentInit, OnDestroy {
-  @Input() linesData: Line[];
+export class SvgDrawBoxComponent implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild('svgBox') svgBox: ElementRef;
   scales: Scales;
   svgWidth: number;
   svgHeight: number;
+  linesData: Line[];
 
-  constructor() {
+  constructor(private store: Store<Line[]>) {
   }
 
   ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.linesData) {
-      this.countScale(changes.linesData.currentValue[0].points);
-    }
+    this.store.pipe(select('lineData')).pipe(switchMap((lines) => combineLatest(...lines))).subscribe((lines: Line[]) => {
+      this.linesData = lines;
+      this.countScale(lines);
+    });
   }
 
   ngAfterContentInit() {
@@ -43,13 +43,15 @@ export class SvgDrawBoxComponent implements OnInit, OnChanges, AfterContentInit,
     elementResizeDetector.removeAllListeners(this.svgBox.nativeElement);
   }
 
-  countScale(data: Point[]): void {
+  countScale(data: Line[]): void {
     this.scales = {
       x: scaleLinear()
-        .domain([min(data, (point) => point.time), max(data, (point) => point.time)])
+        .domain([min(data, (line) => min(line.points, (point) => point.time)),
+          max(data, (line) => max(line.points, (point) => point.time))])
         .range([0, this.svgWidth]),
       y: scaleLinear()
-        .domain([min(data, (point) => point.val), max(data, (point) => point.val)])
+        .domain([min(data, (line) => min(line.points, (point) => point.val)),
+          max(data, (line) => max(line.points, (point) => point.val))])
         .range([0, this.svgHeight])
     };
   }

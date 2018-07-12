@@ -14,7 +14,7 @@ export class LineComponent {
   @ViewChild('line') linePath: ElementRef;
 
   private lineFunction: Function = line()
-    .x((point) => this.scales.x(point['time']))
+    .x((point) => this.scales.x(point['time'])) // because of bad ts types for d3
     .y((point) => this.scales.y(point['val']));
 
   getColor() {

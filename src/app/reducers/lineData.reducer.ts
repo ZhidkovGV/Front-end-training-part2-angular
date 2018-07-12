@@ -2,7 +2,6 @@ import {ActionWithPayload} from '../interfaces/action.interface';
 import {Line} from '../interfaces/line.interface';
 import {interval} from 'rxjs';
 import {map, scan, startWith} from 'rxjs/operators';
-import _ from 'lodash';
 
 export const ADD_NEW_LINE = 'ADD_NEW_LINE';
 export const UPDATE_LINE_COLOR = 'UPDATE_LINE_COLOR';
@@ -19,11 +18,11 @@ export function lineDataReducer(state: Line[] = initialState, action: ActionWith
           if (acc.points.length < 1) {
             acc.color = action.payload.color;
             acc.shouldRender = true;
-            acc.id = _.uniqueId('doggy');
+            acc.id = state.length + 1;
           }
           const time = (new Date()).getTime();
           const point = {val, time};
-          acc.points.push(point);
+          acc.points = [...acc.points, point];
           return acc;
         }, {points: []} as Line)
       );

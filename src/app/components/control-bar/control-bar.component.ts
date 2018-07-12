@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Line} from '../../interfaces/line.interface';
+import {select, Store} from '@ngrx/store';
 
 // this component is pretty useless, and i would get rid of it.
 // But it's ok, no harm done, except potential questions on the purpose of it's existence on code review
@@ -12,7 +13,13 @@ import {Line} from '../../interfaces/line.interface';
   templateUrl: './control-bar.component.html',
   styleUrls: ['./control-bar.component.css']
 })
-export class ControlBarComponent {
-  @Input() linesData: Line[];
+export class ControlBarComponent implements OnInit {
+  linesData: Line[];
+  constructor(private store: Store<Line[]>) {
+  }
+
+  ngOnInit() {
+      this.store.pipe(select('lineData')).subscribe((lines) => this.linesData = lines);
+  }
 
 }
