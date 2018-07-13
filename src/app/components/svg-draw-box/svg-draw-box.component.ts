@@ -43,15 +43,15 @@ export class SvgDrawBoxComponent implements OnInit, AfterContentInit, OnDestroy 
     elementResizeDetector.removeAllListeners(this.svgBox.nativeElement);
   }
 
-  countScale(data: Line[]): void {
+  countScale(lines: Line[]): void {
     this.scales = {
       x: scaleLinear()
-        .domain([min(data, (line) => min(line.points, (point) => point.time)),
-          max(data, (line) => max(line.points, (point) => point.time))])
+        .domain([min(lines, (line) => min(line.points, (point) => point.time)),
+          max(lines, (line) => max(line.points, (point) => point.time))])
         .range([0, this.svgWidth]),
       y: scaleLinear()
-        .domain([min(data, (line) => min(line.points, (point) => point.val)),
-          max(data, (line) => max(line.points, (point) => point.val))])
+        .domain([min(lines, (line) => min(line.points, (point) => point.val)),
+          max(lines, (line) => max(line.points, (point) => point.val))])
         .range([0, this.svgHeight])
     };
   }

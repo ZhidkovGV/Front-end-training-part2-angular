@@ -10,7 +10,7 @@ import { LineControlComponent } from './components/line-control/line-control.com
 import { AxesComponent } from './components/axes/axes.component';
 import { ControlsComponent } from './components/controls/controls.component';
 import { LineComponent } from './components/line/line.component';
-import {lineDataReducer} from './reducers/lineData.reducer';
+import {lineDataReducer} from './reducers/line-data.reducer';
 
 @NgModule({
   declarations: [

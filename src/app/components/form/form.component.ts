@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {ADD_NEW_LINE} from '../../reducers/lineData.reducer';
+import {ADD_NEW_LINE} from '../../reducers/line-data.reducer';
 import {GetInitialColorService} from '../../services/get-initial-color.service';
 import {Line} from '../../interfaces/line.interface';
 

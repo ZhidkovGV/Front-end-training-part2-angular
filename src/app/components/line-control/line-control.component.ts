@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Line} from '../../interfaces/line.interface';
-import {UPDATE_LINE} from '../../reducers/lineData.reducer';
+import {UPDATE_LINE} from '../../reducers/line-data.reducer';
 
 @Component({
   selector: 'app-line-control',
