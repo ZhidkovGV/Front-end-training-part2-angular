@@ -1,10 +1,10 @@
 import {ActionWithPayload} from '../interfaces/action.interface';
 import {Line} from '../interfaces/line.interface';
 import {interval} from 'rxjs';
-import {map, scan, startWith} from 'rxjs/operators';
+import {map, scan, share, startWith} from 'rxjs/operators';
 
 export const ADD_NEW_LINE = 'ADD_NEW_LINE';
-export const UPDATE_LINE_COLOR = 'UPDATE_LINE_COLOR';
+export const UPDATE_LINE = 'UPDATE_LINE';
 export const UPDATE_LINE_VISIBILITY = 'UPDATE_LINE_VISIBILITY';
 const initialState = [];
 
@@ -18,19 +18,35 @@ export function lineDataReducer(state: Line[] = initialState, action: ActionWith
           if (acc.points.length < 1) {
             acc.color = action.payload.color;
             acc.shouldRender = true;
-            acc.id = state.length + 1;
+            acc.id = state.length;
           }
           const time = (new Date()).getTime();
           const point = {val, time};
           acc.points = [...acc.points, point];
           return acc;
-        }, {points: []} as Line)
+        }, {points: []} as Line),
+        share()
       );
       return [...state, newLine];
-    case UPDATE_LINE_COLOR:
-      return state;
-    case UPDATE_LINE_VISIBILITY:
-      return state;
+    case UPDATE_LINE:
+      const colorUpdatedLine = interval(action.payload.$interval).pipe(
+        startWith({} as Line),
+        map(() => Math.random()),
+        scan((acc, val: number) => {
+          if (acc.points.length < 1) {
+            acc.color = action.payload.color;
+            acc.shouldRender = action.payload.shouldRender;
+            acc.id = action.payload.id;
+            acc.points = action.payload.points;
+          }
+          const time = (new Date()).getTime();
+          const point = {val, time};
+          acc.points = [...acc.points, point];
+          return acc;
+        }, {points: []} as Line),
+        share()
+      );
+      return [...state.slice(0, action.payload.id), colorUpdatedLine, ...state.slice(action.payload.id + 1)];
     default:
       return state;
   }

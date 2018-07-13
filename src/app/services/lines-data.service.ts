@@ -22,7 +22,7 @@ export class LinesDataService {
 
   addLine($interval: number) {
     if (!this.lines) {
-      this.lines = []; // not sure about this fix
+      this.lines = [];
     }
     const color = this.getInitialColor.getColor();
     const id = this.lines.length;

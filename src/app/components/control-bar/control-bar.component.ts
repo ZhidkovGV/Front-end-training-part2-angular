@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Line} from '../../interfaces/line.interface';
 import {select, Store} from '@ngrx/store';
+import {combineLatest} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
-// this component is pretty useless, and i would get rid of it.
-// But it's ok, no harm done, except potential questions on the purpose of it's existence on code review
-
-// potentially can be usable if some additional logic will be applied. also separates form and line controls
-// but its really useless for now
 
 @Component({
   selector: 'app-control-bar',
@@ -15,11 +12,24 @@ import {select, Store} from '@ngrx/store';
 })
 export class ControlBarComponent implements OnInit {
   linesData: Line[];
+
   constructor(private store: Store<Line[]>) {
   }
 
   ngOnInit() {
-      this.store.pipe(select('lineData')).subscribe((lines) => this.linesData = lines);
+    this.store.pipe(select('lineData')).pipe(
+      switchMap((lines) => combineLatest(...lines))
+    ).subscribe((lines: Line[]) => {
+      this.linesData = lines;
+    });
+  }
+
+  updateColor(actionObject) {
+    this.store.dispatch(actionObject);
+  }
+
+  updateVisibility(actionObject) {
+    this.store.dispatch(actionObject);
   }
 
 }
