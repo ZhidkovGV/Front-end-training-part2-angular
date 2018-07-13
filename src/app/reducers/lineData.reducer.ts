@@ -5,7 +5,7 @@ import {map, scan, share, startWith} from 'rxjs/operators';
 
 export const ADD_NEW_LINE = 'ADD_NEW_LINE';
 export const UPDATE_LINE = 'UPDATE_LINE';
-export const UPDATE_LINE_VISIBILITY = 'UPDATE_LINE_VISIBILITY';
+
 const initialState = [];
 
 export function lineDataReducer(state: Line[] = initialState, action: ActionWithPayload) {

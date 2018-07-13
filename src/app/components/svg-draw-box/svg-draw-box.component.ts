@@ -1,12 +1,11 @@
-import {Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef, OnChanges, AfterContentInit, OnDestroy} from '@angular/core';
-import {Point} from '../../interfaces/point.interface';
+import {AfterContentInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as ResizeDetector from 'element-resize-detector';
 import {scaleLinear} from 'd3-scale';
 import {max, min} from 'd3-array';
 import {Scales} from '../../interfaces/scales.interface';
 import {Line} from '../../interfaces/line.interface';
 import {select, Store} from '@ngrx/store';
-import {combineLatest, Observable} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 const elementResizeDetector = ResizeDetector();
