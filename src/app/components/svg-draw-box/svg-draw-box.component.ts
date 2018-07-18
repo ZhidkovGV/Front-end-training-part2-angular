@@ -1,12 +1,9 @@
 import {AfterContentInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as ResizeDetector from 'element-resize-detector';
-import {scaleLinear} from 'd3-scale';
-import {max, min} from 'd3-array';
 import {Scales} from '../../interfaces/scales.interface';
 import {Line} from '../../interfaces/line.interface';
 import {select, Store} from '@ngrx/store';
-import {combineLatest} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {COUNT_SCALES} from '../../store/actions';
 
 const elementResizeDetector = ResizeDetector();
 
@@ -26,9 +23,14 @@ export class SvgDrawBoxComponent implements OnInit, AfterContentInit, OnDestroy 
   }
 
   ngOnInit() {
-    this.store.pipe(select('lineData')).pipe(switchMap((lines) => combineLatest(...lines))).subscribe((lines: Line[]) => {
+    this.store.pipe(select('lineData')).subscribe((lines: Line[]) => {
+      console.log(lines);
       this.linesData = lines;
       this.countScale(lines);
+    });
+    this.store.pipe(select('scales')).subscribe((scales) => {
+      console.log(scales);
+      this.scales = scales;
     });
   }
 
@@ -44,16 +46,7 @@ export class SvgDrawBoxComponent implements OnInit, AfterContentInit, OnDestroy 
   }
 
   countScale(lines: Line[]): void {
-    this.scales = {
-      x: scaleLinear()
-        .domain([min(lines, (line) => min(line.points, (point) => point.time)),
-          max(lines, (line) => max(line.points, (point) => point.time))])
-        .range([0, this.svgWidth]),
-      y: scaleLinear()
-        .domain([min(lines, (line) => min(line.points, (point) => point.val)),
-          max(lines, (line) => max(line.points, (point) => point.val))])
-        .range([0, this.svgHeight])
-    };
+    this.store.dispatch({type: COUNT_SCALES, payload: {lines, svgHeight: this.svgHeight, svgWidth: this.svgWidth}});
   }
 
 }

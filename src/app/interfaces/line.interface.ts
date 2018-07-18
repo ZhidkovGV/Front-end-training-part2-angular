@@ -5,5 +5,5 @@ export interface Line {
   color: string;
   points: Point[];
   id: number;
-  $interval: number;
+  interval: number;
 }

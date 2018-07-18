@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Line} from '../../interfaces/line.interface';
 import {select, Store} from '@ngrx/store';
-import {combineLatest} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
 
 
 @Component({
@@ -17,9 +15,7 @@ export class ControlBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.pipe(select('lineData')).pipe(
-      switchMap((lines) => combineLatest(...lines))
-    ).subscribe((lines: Line[]) => {
+    this.store.pipe(select('lineData')).subscribe((lines: Line[]) => {
       this.linesData = lines;
     });
   }
