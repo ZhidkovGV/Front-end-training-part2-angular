@@ -12,7 +12,7 @@ export class CreateLineService {
   constructor(private colorService: GetInitialColorService) {
   }
 
-  createLine(data): Observable<Line> {
+  createLine(data, id): Observable<Line> {
     const color = this.colorService.getColor();
     const $interval = parseInt(data.inputValue, 10) || 3000;
     return interval($interval).pipe(
@@ -20,7 +20,7 @@ export class CreateLineService {
       map(() => Math.random()),
       scan((acc, val: number) => {
         if (acc.points.length < 1) {
-          acc.id = _.uniqueId();
+          acc.id = id;
           acc.color = color;
           acc.shouldRender = true;
         }
