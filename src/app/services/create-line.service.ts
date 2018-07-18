@@ -2,18 +2,15 @@ import {Injectable} from '@angular/core';
 import {interval, Observable} from 'rxjs';
 import {Line} from '../interfaces/line.interface';
 import {map, scan, startWith} from 'rxjs/operators';
-import {GetInitialColorService} from './get-initial-color.service';
-import _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateLineService {
-  constructor(private colorService: GetInitialColorService) {
+  constructor() {
   }
 
   createLine(data, id): Observable<Line> {
-    const color = this.colorService.getColor();
     const $interval = parseInt(data.inputValue, 10) || 3000;
     return interval($interval).pipe(
       startWith({} as Line),
@@ -21,7 +18,6 @@ export class CreateLineService {
       scan((acc, val: number) => {
         if (acc.points.length < 1) {
           acc.id = id;
-          acc.color = color;
           acc.shouldRender = true;
         }
         const time = (new Date()).getTime();
