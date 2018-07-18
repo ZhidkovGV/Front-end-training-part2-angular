@@ -19,7 +19,7 @@ export function scalesCountReducer(state: Scales = initialState, action: ActionW
           .domain([min(action.payload.lines as Line[], (line) => min(line.points, (point) => point.val)),
             max(action.payload.lines as Line[], (line) => max(line.points, (point) => point.val))])
           .range([0, action.payload.svgHeight])
-      }
+      };
     default:
       return state;
   }

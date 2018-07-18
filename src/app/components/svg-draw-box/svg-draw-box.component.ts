@@ -24,12 +24,10 @@ export class SvgDrawBoxComponent implements OnInit, AfterContentInit, OnDestroy 
 
   ngOnInit() {
     this.store.pipe(select('lineData')).subscribe((lines: Line[]) => {
-      console.log(lines);
       this.linesData = lines;
       this.countScale(lines);
     });
     this.store.pipe(select('scales')).subscribe((scales) => {
-      console.log(scales);
       this.scales = scales;
     });
   }
