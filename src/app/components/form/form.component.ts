@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {ADD_NEW_LINE} from '../../store/actions';
-import {Line} from '../../interfaces/line.interface';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ADD_NEW_LINE } from '../../store/actions';
+import { Line } from '../../interfaces/line.interface';
 
 
 @Component({
@@ -14,12 +14,11 @@ export class FormComponent {
   }
 
   addNewLine(intervalInput: HTMLInputElement) {
-    this.store.dispatch({
+      this.store.dispatch({
       type: ADD_NEW_LINE, payload: {
         inputValue: intervalInput.value,
       }
     });
   }
-
 
 }

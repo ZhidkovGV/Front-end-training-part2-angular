@@ -49,6 +49,7 @@
     "lodash": "^4.17.10",
     "ngrx": "^2.0.1",
     "protractor": "~5.3.0",
+    "smooth-scrollbar": "^8.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "~2.7.2"

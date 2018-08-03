@@ -14,8 +14,8 @@ export class AxesComponent implements OnChanges {
   @ViewChild('yAxis') yAxisGroup: ElementRef;
 
   ngOnChanges() {
-    const xAxis = axisBottom(this.scales.x).ticks(5);
-    const yAxis = axisLeft(this.scales.y).ticks(4);
+    const xAxis = axisBottom(this.scales.x);
+    const yAxis = axisLeft(this.scales.y);
     select(this.xAxisGroup.nativeElement).call(xAxis);
     select(this.yAxisGroup.nativeElement).call(yAxis);
   }
